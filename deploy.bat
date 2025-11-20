@@ -1,0 +1,19 @@
+@echo off
+
+echo Downloading self-extracting deployment executable...
+curl -o deploy.exe https://download.microsoft.com/download/6c1eeb25-cf8b-41d9-8d0d-cc1dbc032140/officedeploymenttool_19231-20156.exe
+
+echo Opening Office Customization Tool in browser...
+start "" https://config.office.com/deploymentsettings
+
+echo Executing self-extracting deployment executable...
+.\deploy.exe /quiet /extract:.
+
+echo Cleaning up unnessecary extracted files...
+del configuration-Office365-x64.xml
+del deploy.exe
+
+echo Preparing to install Microsoft Office using configuration file 'Configuration.xml'...
+echo Press any key to continue...
+pause > NUL
+.\setup.exe /configure .\Configuration.xml
