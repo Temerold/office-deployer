@@ -1,2 +1,6 @@
 # Microsoft Office Customization Tool configurations
 *.xml
+
+# Microsoft Office deployment executables
+deploy.exe
+setup.exe
